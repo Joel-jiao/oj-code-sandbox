@@ -104,10 +104,7 @@ public abstract class JavaCodeSandboxTemplate implements CodeSandbox {
      * @return
      */
     public List<ExecuteMessage> runFile(File userCodeFile, List<String> inputList) {
-        String userCodeparentPath = userCodeFile.getParentFile().getAbsolutePath();
-        String userDir = System.getProperty("user.dir");
-        String globalCodePathName = userDir + File.separator + GLOBAL_CODE_DIR_NAME;
-        String userCodeParentPath = globalCodePathName + File.separator + UUID.randomUUID();
+        String userCodeParentPath = userCodeFile.getParentFile().getAbsolutePath();
         List<ExecuteMessage> executeMessageList = new ArrayList<>();
         for (String inputArgs : inputList) {
             String runCmd = String.format(

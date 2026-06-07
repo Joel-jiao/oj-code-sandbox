@@ -38,17 +38,15 @@ public abstract class JavaCodeSandboxTemplate implements CodeSandbox {
         ExecuteMessage compileExecuteMessage = compileFile(userCodeFile);
         System.out.println(compileExecuteMessage);
 
-
         // 3.执行代码，得到输出结果
         List<ExecuteMessage> executeMessageList = runFile(userCodeFile, inputList);
-
 
         // 4.整理输出结果
         ExecuteCodeResponse outputResponse = getOutputResponse(executeMessageList);
 
         // 5.文件清理
         boolean b = deleteFile(userCodeFile);
-        if (b) {
+        if (!b) {
             log.error("deleteFile Error, userCodeFilePath = {}" + userCodeFile.getAbsolutePath());
         }
 
